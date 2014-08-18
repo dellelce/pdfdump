@@ -48,7 +48,7 @@ main (int argc, char **argv)
     if (zerocnt > 0)
     {
       if (zerocnt > 1) { printf(BLANK); cnt += 1; } 
-      zerocnt = 0;
+      zerocnt += 1;
     }
 
     if (ch < 32)
