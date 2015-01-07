@@ -26,7 +26,7 @@ main (int argc, char **argv)
 {
   FILE *fh;
   int   ch;
-  int   cnt = 0; // number of characters we printed
+  int   cnt = 0;     // number of characters we printed
   int   zerocnt = 0; // count binary zeros: just one will not print anything, more will print a blank
 
   fh = fopen(argv[1], "rb");
@@ -53,8 +53,14 @@ main (int argc, char **argv)
 
     if (ch < 32)
     {
-      if (ch == '\n') { if (cnt != 0) { cnt = 0; printf("\n"); }; continue; }
-      if (ch == 8) { cnt += 4; printf("    "); continue; }
+      if (ch == '\n')
+      {
+        if (cnt != 0) { cnt = 0; printf("\n"); }; continue;
+      }
+      if (ch == 8)
+      {
+        cnt += 4; printf("    "); continue;
+      }
 
       printf(BLANK);
       cnt += 1;
