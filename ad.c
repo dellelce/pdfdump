@@ -21,6 +21,10 @@
 #define DOT "."
 #endif // BLANK
 
+#ifndef TOKEN_BUFFER
+#define TOKEN_BUFFER  256
+#endif // TOKEN_BUFFER
+
 
 // Types: pstate / processing state, use a standar 2D state machine?
 
@@ -31,6 +35,10 @@ typedef struct __process_state
   unsigned short ps_substate;
   unsigned long  ps_depth;
 // pdf state / output state(? - TBD)
+// ..
+// token
+
+  unsigned char  ps_token_buffer[TOKEN_BUFFER];
 } pstate_t;
 
 
@@ -39,11 +47,9 @@ typedef struct __process_state
 unsigned int
 pushchar(pstate_t *s, unsigned char ch)
 {
-
   // work in progress
 
   return 0;
-
 }
 
 // main
@@ -61,8 +67,10 @@ main (int argc, char **argv)
  unsigned long  gcnt = 0;    // global counter - count all chars read
  unsigned short verread = 0; // version is NOT read = 0 - read = 1
 
- ver[0] = 0;
+// Initialize stuff
 
+ ver[0] = 0;
+ 
  fh = fopen(argv[1], "rb");
 
  if (fh == NULL)
@@ -84,7 +92,7 @@ main (int argc, char **argv)
         verread = 1;
         verclose = ch;
         printf ("Version: %s\n", &ver[0]);
-        printf ("Version closing char: %02xs\n", ch);
+        printf ("Version closing char: %02x\n", ch);
       }
       else
       {
