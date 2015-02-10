@@ -9,22 +9,7 @@
 
 #include <stdio.h>
 
-#ifndef LINESIZE
-#define LINESIZE 120
-#endif // LINESIZE
-
-#ifndef BLANK
-#define BLANK " "
-#endif // BLANK
-
-#ifndef DOT
-#define DOT "."
-#endif // BLANK
-
-#ifndef TOKEN_BUFFER
-#define TOKEN_BUFFER  256
-#endif // TOKEN_BUFFER
-
+#include "pdf.h"
 
 // Types: pstate / processing state, use a standar 2D state machine?
 
