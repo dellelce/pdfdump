@@ -1,15 +1,15 @@
 
 #
-# pdf, 2015 by Antonio Dell'elce, antonio@dellelce.com
+# pdf, 2016 by Antonio Dell'elce, antonio@dellelce.com
 #
 
 CC             = gcc
-TARGET         = pdfdump
+TARGET         = pdf
 
 SHELL          = /bin/bash
 
-CFILES         = ad.c
-OFILES         = ad.o
+CFILES         = pdfdump.c
+OFILES         = pdfdump.o
 LDFLAGS	       = 
 
 
@@ -36,9 +36,9 @@ $(TARGET):   $(OFILES)
 # -- DEPS --
 #
 
-ad.o: ad.c $(HFILES) ./pdf.h
-	@echo "CC "ad.c
-	@$(CC) -c $(CFLAGS) -o ad.o ad.c
+pdfdump.o: pdfdump.c $(HFILES) ./pdf.h
+	@echo "CC "pdfdump.c
+	@$(CC) -c $(CFLAGS) -o pdfdump.o pdfdump.c
 
  
 #  
