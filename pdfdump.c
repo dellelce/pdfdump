@@ -1,8 +1,8 @@
 /* 
    File:    pdfdump.c
-   Created: 1449 120814
+   Created: 120814
 
-   mini pdf dumper
+   pdf dumper
 */
 
 // includes
@@ -26,17 +26,6 @@ typedef struct __process_state
   unsigned char  ps_token_buffer[TOKEN_BUFFER];
 } pstate_t;
 
-
-// functions
-
-unsigned int
-pushchar(pstate_t *s, unsigned char ch)
-{
-  // work in progress
-
-  return 0;
-}
-
 typedef struct 
 {
  // count binary zeros: just one will not print anything, more will print a blank
@@ -51,7 +40,9 @@ typedef struct
  unsigned short   verread = 0;  // version is NOT read = 0 - read = 1
 } pdf_context_t;
 
+//
 // main
+//
 
 int
 main (int argc, char **argv)
@@ -126,7 +117,6 @@ main (int argc, char **argv)
    }
 
    // CR
-
    if (pdf.ch == pdf.verclose)
    {
     pdf.cnt = 0;
@@ -140,6 +130,7 @@ main (int argc, char **argv)
    continue;
   }
 
+  // Unprintable characters go hex
   if (pdf.ch > 126)
   {
    printf("<%02x>", pdf.ch);
