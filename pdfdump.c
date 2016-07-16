@@ -11,35 +11,6 @@
 
 #include "pdf.h"
 
-// Types: pstate / processing state, use a standar 2D state machine?
-
-typedef struct __process_state
-{
-// input state
-  unsigned short ps_state;
-  unsigned short ps_substate;
-  unsigned long  ps_depth;
-// pdf state / output state(? - TBD)
-// ..
-// token
-
-  unsigned char  ps_token_buffer[TOKEN_BUFFER];
-} pstate_t;
-
-typedef struct 
-{
- // count binary zeros: just one will not print anything, more will print a blank
- // int   zerocnt = 0;
- FILE            *fh;           // pdf file handle
- int              ch;
- int              cnt = 0;      // number of characters we printed
- pstate_t         state;
- unsigned char    ver[10];
- unsigned char    verclose = 0;
- unsigned long    gcnt = 0;     // global counter - count all chars read
- unsigned short   verread = 0;  // version is NOT read = 0 - read = 1
-} pdf_context_t;
-
 //
 // main
 //
@@ -52,6 +23,8 @@ main (int argc, char **argv)
 // Initialize stuff
 
  pdf.ver[0] = 0;
+ pdf.gcnt   = 0;
+ pdf.cnt    = 0;
  
  pdf.fh = fopen(argv[1], "rb");
 
@@ -72,13 +45,13 @@ main (int argc, char **argv)
       if (pdf.ch == 0xa || pdf.ch == 0xd)
       {
         pdf.verread  = 1;
-        pdf.verclose = ch;
+        pdf.verclose = pdf.ch;
         printf ("Version: %s\nVersion closing char: %02x\n", &pdf.ver[0], pdf.ch);
       }
       else
       {
-        pdf.ver[gcnt]   = pdf.ch;
-        pdf.ver[gcnt+1] = 0;
+        pdf.ver[pdf.gcnt]   = pdf.ch;
+        pdf.ver[pdf.gcnt+1] = 0;
       }
     }
   }
@@ -126,7 +99,7 @@ main (int argc, char **argv)
 
    //printf(DOT);
    printf("<%02x>", pdf.ch);
-   cnt += 4;
+   pdf.cnt += 4;
    continue;
   }
 
