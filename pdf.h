@@ -2,7 +2,7 @@
  
   @file    pdf.h
   @author  Antonio Dell'elce
-  @created 0429 100215
+  @created 100215
   @brief   
  
 */
@@ -54,17 +54,15 @@ typedef struct
 {
  // count binary zeros: just one will not print anything, more will print a blank
  // int   zerocnt = 0;
- FILE            *fh;           // pdf file handle
+ FILE            *fh;        // pdf file handle
  int              ch;
- int              cnt;      // number of characters we printed
+ int              cnt;       // number of characters we printed (when dumping to screen)
  pstate_t         state;
  unsigned char    ver[10];
  unsigned char    verclose;
  unsigned long    gcnt;     // global counter - count all chars read
  unsigned short   verread;  // version is NOT read = 0 - read = 1
 } pdf_context_t;
-
-
 
 #endif /* __PDF_H */
 
