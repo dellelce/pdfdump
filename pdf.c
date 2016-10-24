@@ -1,6 +1,6 @@
 /* 
-   File:    pdfdump.c
-   Created: 120814
+   File:    pdf.c
+   Created: 241016
 
    pdf dumper
 */
@@ -12,11 +12,11 @@
 #include "pdf.h"
 
 //
-// main
+// pdf
 //
 
 int
-main (int argc, char **argv)
+pdf (char *pdfName)
 {
  pdf_context_t pdf;
 
@@ -26,7 +26,7 @@ main (int argc, char **argv)
  pdf.gcnt   = 0;
  pdf.cnt    = 0;
  
- pdf.fh = fopen(argv[1], "rb");
+ pdf.fh = fopen(pdfName, "rb");
 
  if (pdf.fh == NULL)
  {
