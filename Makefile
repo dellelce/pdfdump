@@ -8,8 +8,8 @@ TARGET         = pdf
 
 SHELL          = /bin/bash
 
-CFILES         = pdfdump.c
-OFILES         = pdfdump.o
+CFILES         = pdf.c pdfdump.c
+OFILES         = pdf.o pdfdump.o
 LDFLAGS	       = 
 
 
@@ -35,6 +35,10 @@ $(TARGET):   $(OFILES)
 #
 # -- DEPS --
 #
+
+pdf.o: pdf.c $(HFILES) ./pdf.h
+	@echo "CC "pdf.c
+	@$(CC) -c $(CFLAGS) -o pdf.o pdf.c
 
 pdfdump.o: pdfdump.c $(HFILES) ./pdf.h
 	@echo "CC "pdfdump.c
