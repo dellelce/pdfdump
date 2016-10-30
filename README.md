@@ -1,4 +1,4 @@
-* my PDF dumper
+# my PDF dumper
 
 Using PDF Specification from Adobe:
 
