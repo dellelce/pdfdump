@@ -37,6 +37,7 @@ pdf (char *pdfName)
  {
   pdf.ch = fgetc(pdf.fh);
 
+/*
   // read PDF version
   if (pdf.gcnt < (sizeof(pdf.ver)-1)) // slightly buggy condition as it is 
   {
@@ -55,14 +56,17 @@ pdf (char *pdfName)
       }
     }
   }
+*/
   
-  pdf.gcnt = pdf.gcnt + 1;
+  //pdf.gcnt = pdf.gcnt + 1;
 
+/*
   if (pdf.cnt >= LINESIZE)
   {
    pdf.cnt = 0;
    printf("\n");
   }
+*/
 
 /*
   if (ch == 0) { zerocnt += 1; continue; }
@@ -78,27 +82,40 @@ pdf (char *pdfName)
 
   if (pdf.ch < 32)
   {
+/*
    if (pdf.ch == 8)
    {
     pdf.cnt += 4; printf("    "); continue;
    }
+*/
 
-   // CR
+   // EOL
    if (pdf.ch == 0x0d)
    {
     pdf.cnt = 0;
+    printf("\n");
     //printf(" <EOL>\n");
     continue;
    }
 
+   // EOL: 0x0a after 0x0d
    if (pdf.ch == 0x0a && pdf.cnt == 0)
    {
     continue;
    }
 
+   // After EOL: all other white spaces conditions
+
+   if (pdf.ch == 0x09 || pdf.ch == 0x0A || pdf.ch == 0x0C || pdf.ch == 0x20)
+   {
+    printf(" ");
+    pdf.cnt += 1;
+    continue;
+   }
+
    //printf(DOT);
    printf("<%02x>", pdf.ch);
-   pdf.cnt += 4;
+   pdf.cnt += 1;
    continue;
   }
 
@@ -112,7 +129,7 @@ pdf (char *pdfName)
 
   printf("%c", pdf.ch); 
   pdf.cnt += 1;
- } // while
+ } // while feof
 
  if (pdf.cnt > 0) { printf("\n"); }  
 
