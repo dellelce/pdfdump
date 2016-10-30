@@ -78,22 +78,21 @@ pdf (char *pdfName)
 
   if (pdf.ch < 32)
   {
-/*
-   if (ch == '\n')
-   {
-    if (cnt != 0) { cnt = 0; printf("\n"); }; continue;
-   }
-*/
    if (pdf.ch == 8)
    {
     pdf.cnt += 4; printf("    "); continue;
    }
 
    // CR
-   if (pdf.ch == pdf.verclose)
+   if (pdf.ch == 0x0d)
    {
     pdf.cnt = 0;
-    printf(" <EOL>\n");
+    //printf(" <EOL>\n");
+    continue;
+   }
+
+   if (pdf.ch == 0x0a && pdf.cnt == 0)
+   {
     continue;
    }
 
