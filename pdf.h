@@ -43,12 +43,13 @@ typedef struct __process_state
 // token
 
   unsigned char  ps_token_buffer[TOKEN_BUFFER];
+  unsigned short ps_token_used; // actual used part of buffer
 } pstate_t;
 
 /*
-    pdf_context_t
+   pdf_context_t
 
- */
+*/
 
 typedef struct
 {
@@ -58,11 +59,29 @@ typedef struct
  int              ch;
  int              cnt;       // number of characters we printed (when dumping to screen)
  pstate_t         state;
+ unsigned long    gcnt;     // global counter - count all chars read
+ // version block
  unsigned char    ver[10];
  unsigned char    verclose;
- unsigned long    gcnt;     // global counter - count all chars read
  unsigned short   verread;  // version is NOT read = 0 - read = 1
 } pdf_context_t;
+
+// States
+
+#define STATE_READING_NULL         0
+#define STATE_READING_VERSION      1
+#define STATE_NEW_LINE             2 // we are at the beginning of a line
+
+
+// Substates
+
+
+/*
+   Prototypes
+*/
+
+int pdf(char *pdfName);
+
 
 #endif /* __PDF_H */
 
