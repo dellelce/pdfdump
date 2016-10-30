@@ -1,4 +1,13 @@
 
+WHITE-SPACE: From "7.2.2"
+
+ 0 00 Null (NUL)
+ 9 09 HORIZONTAL TAB (HT)
+10 0A LINE FEED (LF)
+12 0C FORM FEED (FF)
+13 0D CARRIAGE RETURN (CR)
+32 20 SPACE (SP)
+
 
 OBJECTS: From "7.3 Objects" (page 13)
 
@@ -22,4 +31,5 @@ PDF includes eight basic types of objects: Boolean values, Integer and Real numb
   consists of a dictionary followed by zero or more bytes bracketed between the keywords stream and endstream
 
 * Null object
+
 
