@@ -18,7 +18,7 @@
 int
 main (int argc, char **argv)
 {
- return pdf(argv[1]);
+ return pdf_read(argv[1]);
 }
 
 // ** EOF **
