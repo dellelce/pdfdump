@@ -25,7 +25,7 @@
 #endif // BLANK
 
 #ifndef TOKEN_BUFFER
-#define TOKEN_BUFFER  256
+#define TOKEN_BUFFER  1024
 #endif // TOKEN_BUFFER
 
 //
@@ -34,17 +34,26 @@
 
 typedef struct __process_state
 {
-// input state
-  unsigned short ps_state;
-  unsigned short ps_substate;
-  unsigned long  ps_depth;
-// pdf state / output state(? - TBD)
-// ..
-// token
-
-  unsigned char  ps_token_buffer[TOKEN_BUFFER];
-  unsigned short ps_token_used; // actual used part of buffer
+ unsigned short ps_state;
+ unsigned short ps_substate;
+ unsigned long  ps_depth;
 } pstate_t;
+
+// states
+
+#define STATE_MAIN    1
+#define STATE_COMMENT 2
+
+/*
+   pdf_token
+*/
+
+typedef struct __pdf_token
+{
+ unsigned char  ps_token_buffer[TOKEN_BUFFER];
+ unsigned short ps_token_used; // actual used part of buffer
+ // token type missing
+} pdf_token_t;
 
 /*
    pdf_context_t
@@ -80,7 +89,7 @@ typedef struct
    Prototypes
 */
 
-int pdf(char *pdfName);
+int pdf_read(char *pdfName);
 
 
 #endif /* __PDF_H */
