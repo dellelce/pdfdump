@@ -1,5 +1,5 @@
 
-WHITE-SPACE: From "7.2.2"
+WHITE-SPACE: "7.2.2"
 
  0 00 Null (NUL)
  9 09 HORIZONTAL TAB (HT)
@@ -8,28 +8,53 @@ WHITE-SPACE: From "7.2.2"
 13 0D CARRIAGE RETURN (CR)
 32 20 SPACE (SP)
 
+DELIMETERS: "7.2.2" (page 12)
 
-OBJECTS: From "7.3 Objects" (page 13)
+(  40 28  50 LEFT PARENTHESIS
+)  41 29  51 RIGHT PARENTHESIS
+<  60 3C  60 LESS-THAN SIGN
+>  62 3E  62 GREATER-THAN SIGN
+[  91 5B 133 LEFT SQUARE BRACKET
+]  93 5D 135 RIGHT SQUARE BRACKET
+{ 123 7B 173 LEFT CURLY BRACKET
+} 125 7D 175 RIGHT CURLY BRACKET
+/  47 2F  57 SOLIDUS
+%  37 25  45 PERCENT SIGN
 
-PDF includes eight basic types of objects: Boolean values, Integer and Real numbers, Strings, Names, Arrays, Dictionaries, Streams, and the null object.
+
+"7.2.3 Comments"
+
+Any occurrence of the PERCENT SIGN (25h) outside a string or stream introduces a comment.
 
 
-* Boolean
 
-* Numeric (Integer/Real)
+OBJECTS: "7.3 Objects" (page 13)
 
-* Strings
+PDF includes eight basic types of objects: 
 
-* Names
+ * Boolean
 
-* Arrays
+ * Numeric (Integer/Real)
+ 
+ * Strings
+ 
+ * Names
+ 
+ * Arrays
+ 
+ * Dictionaries
+   A dictionary shall be written as a sequence of key-value pairs enclosed in double angle brackets
+   (<< >>)
 
-* Dictionaries
-  A dictionary shall be written as a sequence of key-value pairs enclosed in double angle brackets (<<>>)
+ * Streams
+   consists of a dictionary followed by zero or more bytes bracketed between the keywords
+   stream and endstream
 
-* Streams
-  consists of a dictionary followed by zero or more bytes bracketed between the keywords stream and endstream
+ * Null object
 
-* Null object
+7.3.2 Boolean objects
+
+ * true
+
 
 
