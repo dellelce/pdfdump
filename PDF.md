@@ -1,5 +1,5 @@
 
-# WHITE-SPACE: "7.2.2"
+## WHITE-SPACE: "7.2.2"
 
  0 00 Null (NUL)
  9 09 HORIZONTAL TAB (HT)
@@ -8,7 +8,7 @@
 13 0D CARRIAGE RETURN (CR)
 32 20 SPACE (SP)
 
-# DELIMETERS: "7.2.2" (page 12)
+## DELIMETERS: "7.2.2" (page 12)
 
 ```csv
 (  40 28  50 LEFT PARENTHESIS
@@ -24,13 +24,13 @@
 ```
 
 
-# "7.2.3 Comments"
+## "7.2.3 Comments"
 
 Any occurrence of the PERCENT SIGN (25h) outside a string or stream introduces a comment.
 
 
 
-# OBJECTS: "7.3 Objects" (page 13)
+## OBJECTS: "7.3 Objects" (page 13)
 
 PDF includes eight basic types of objects: 
 
@@ -47,7 +47,7 @@ PDF includes eight basic types of objects:
    stream and endstream
  * Null object
 
-# 7.3.2 Boolean objects
+## 7.3.2 Boolean objects
 
  * true
 
