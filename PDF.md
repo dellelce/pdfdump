@@ -1,12 +1,14 @@
 
 ## WHITE-SPACE: "7.2.2"
 
+```csv
  0 00 Null (NUL)
  9 09 HORIZONTAL TAB (HT)
 10 0A LINE FEED (LF)
 12 0C FORM FEED (FF)
 13 0D CARRIAGE RETURN (CR)
 32 20 SPACE (SP)
+```
 
 ## DELIMETERS: "7.2.2" (page 12)
 
@@ -22,7 +24,6 @@
 /  47 2F  57 SOLIDUS
 %  37 25  45 PERCENT SIGN
 ```
-
 
 ## "7.2.3 Comments"
 
@@ -50,6 +51,3 @@ PDF includes eight basic types of objects:
 ## 7.3.2 Boolean objects
 
  * true
-
-
-
