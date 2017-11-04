@@ -89,7 +89,7 @@ typedef struct
    Prototypes
 */
 
-int pdf_read(char *pdfName);
+int pdf_read(pdf_context_t *ctx, char *pdfName);
 
 
 #endif /* __PDF_H */

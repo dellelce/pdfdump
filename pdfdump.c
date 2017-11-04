@@ -18,7 +18,9 @@
 int
 main (int argc, char **argv)
 {
- return pdf_read(argv[1]);
+ pdf_context_t ctx = { 0 };
+
+ return pdf_read(&ctx, argv[1]);
 }
 
 // ** EOF **
