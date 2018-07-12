@@ -6,22 +6,15 @@
 */
 
 // includes
-
 #include <stdio.h>
-
 #include "pdf.h"
 
 //
 // pdf
 //
-
 int
 pdf_read (pdf_context_t *pdf, char *pdfName)
 {
-/* 
-  unsigned char  ps_token_buffer[TOKEN_BUFFER];
-  unsigned short ps_token_used; // actual used part of buffer
-*/
  unsigned int ch;
 
  pdf->state.ps_state = STATE_MAIN;
