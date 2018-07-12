@@ -24,6 +24,10 @@
 #define DOT "."
 #endif // BLANK
 
+#ifndef NL
+#define NL "\n"
+#endif // BLANK
+
 #ifndef TOKEN_BUFFER
 #define TOKEN_BUFFER  1024
 #endif // TOKEN_BUFFER
@@ -31,7 +35,6 @@
 //
 // Types: pstate_t
 //  processing state, use a standar 2D state machine?
-
 typedef struct __process_state
 {
  unsigned short ps_state;
@@ -40,14 +43,12 @@ typedef struct __process_state
 } pstate_t;
 
 // states
-
 #define STATE_MAIN    1
 #define STATE_COMMENT 2
 
 /*
    pdf_token
 */
-
 typedef struct __pdf_token
 {
  unsigned char  ps_token_buffer[TOKEN_BUFFER];
@@ -57,9 +58,7 @@ typedef struct __pdf_token
 
 /*
    pdf_context_t
-
 */
-
 typedef struct
 {
  // count binary zeros: just one will not print anything, more will print a blank
@@ -76,21 +75,15 @@ typedef struct
 } pdf_context_t;
 
 // States
-
 #define STATE_READING_NULL         0
 #define STATE_READING_VERSION      1
 #define STATE_NEW_LINE             2 // we are at the beginning of a line
 
-
 // Substates
+// --> None defined at the moment
 
-
-/*
-   Prototypes
-*/
-
+/* Prototypes */
 int pdf_read(pdf_context_t *ctx, char *pdfName);
-
 
 #endif /* __PDF_H */
 

@@ -1,4 +1,4 @@
-/* 
+/*
    File:    pdf.c
    Created: 241016
 
@@ -15,17 +15,13 @@
 int
 pdf_read (pdf_context_t *pdf, char *pdfName)
 {
- unsigned int ch;
+ int ch;
 
  pdf->state.ps_state = STATE_MAIN;
 
  // Open pdf file
  pdf->fh = fopen(pdfName, "rb");
-
- if (pdf->fh == NULL)
- {
-   return 1;
- }
+ if (pdf->fh == NULL) return 1;
 
  while (!feof(pdf->fh))
  {
@@ -35,7 +31,7 @@ pdf_read (pdf_context_t *pdf, char *pdfName)
   if (pdf->cnt >= LINESIZE)
   {
    pdf->cnt = 0;
-   printf("\n");
+   printf(NL);
   }
 
   // non printable characters plus some whitespaces
@@ -45,15 +41,12 @@ pdf_read (pdf_context_t *pdf, char *pdfName)
    if (ch == 0x0d)
    {
     pdf->cnt = 0;
-    printf("\n");
+    printf(NL);
     continue;
    }
 
    // EOL: 0x0a after 0x0d
-   if (ch == 0x0a && pdf->cnt == 0)
-   {
-    continue;
-   }
+   if (ch == 0x0a && pdf->cnt == 0) continue;
 
    // After EOL: all other white spaces conditions
 
@@ -78,11 +71,11 @@ pdf_read (pdf_context_t *pdf, char *pdfName)
    continue;
   }
 
-  printf("%c", ch); 
+  printf("%c", ch);
   pdf->cnt += 1;
  } // while feof
 
- if (pdf->cnt > 0) { printf("\n"); }  
+ if (pdf->cnt > 0) { printf(NL); }
 
  return 0;
 }
