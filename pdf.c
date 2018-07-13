@@ -17,7 +17,7 @@ pdf_read (pdf_context_t *pdf, char *pdfName)
 {
  int ch;
 
- pdf->state.ps_state = STATE_MAIN;
+ pdf->state.state = STATE_MAIN;
 
  // Open pdf file
  pdf->fh = fopen(pdfName, "rb");
