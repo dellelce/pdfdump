@@ -1,10 +1,10 @@
 /**
- 
+
   @file    pdf.h
   @author  Antonio Dell'elce
   @created 100215
-  @brief   
- 
+  @brief
+
 */
 
 #ifndef __PDF_H
@@ -32,19 +32,43 @@
 #define TOKEN_BUFFER  1024
 #endif // TOKEN_BUFFER
 
-//
-// Types: pstate_t
-//  processing state, use a standar 2D state machine?
+/*
+  Types: pstate_t
+  processing state, use a standar 2D state machine?
+*/
 typedef struct __process_state
 {
- unsigned short ps_state;
- unsigned short ps_substate;
- unsigned long  ps_depth;
+ unsigned short state;
+ unsigned short substate;
+ unsigned long  depth;
 } pstate_t;
 
+/*
+   TODO:
+          * continue review spec on stream objects (p 18)
+          * review xref spec (p 40 7.5.4)
+
+   Null object does not need a custom state as it is just a "token" (handled by STATE_TOKEN)
+*/
+
 // states
-#define STATE_MAIN    1
-#define STATE_COMMENT 2
+#define STATE_MAIN      1
+#define STATE_COMMENT   2
+#define STATE_TOKEN     3 // some tokens are special (and will be "coalesced": 'stream','endstream')
+#define STATE_LITSTRING 4 // (Literally a (string))
+#define STATE_HEXSTRING 5 // <...>
+#define STATE_NAMEOBJ   6 // #...
+#define STATE_ARRAYOBJ  7 // [..]
+#define STATE_DICTOBJ   8 // <<..>>
+
+/*
+   buffer_t
+*/
+typedef struct __buffer
+{
+ unsigned int  size;
+ char         *bytes;
+} buffer_t;
 
 /*
    pdf_token
